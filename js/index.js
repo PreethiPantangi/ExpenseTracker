@@ -14,25 +14,32 @@ let filteredArray = [];
 
 
 function addExpenseTotal() {
+
     const expenseAmount = expenseAmountInput.value;
-    const expenseDesc = expenseDescriptionInput.value;
+    let expenseDesc = expenseDescriptionInput.value;
+    expenseDesc = expenseDesc.charAt(0).toUpperCase() + expenseDesc.slice(1);
 
-    const expenseItem = {}
-    expenseItem.Desc = expenseDesc;
-    expenseItem.Amount = parseInt(expenseAmount);
-    expenseItem.currentDate = new Date();
+    if (expenseAmount && expenseDesc) {
+        document.querySelector(".error-message").textContent = '';
+        const expenseItem = {}
+        expenseItem.Desc = expenseDesc;
+        expenseItem.Amount = parseInt(expenseAmount);
+        expenseItem.currentDate = new Date();
 
-    expenseRecord.push(expenseItem);
+        expenseRecord.push(expenseItem);
 
-    totalExpense += parseInt(expenseAmount);
-    const someText = `Total : ${totalExpense}`;
+        totalExpense += parseInt(expenseAmount);
+        const someText = `Total : ${totalExpense}`;
 
-    totalExpenseOutput.textContent = someText;
+        totalExpenseOutput.textContent = someText;
 
-    displayListItem(expenseRecord);
+        displayListItem(expenseRecord);
 
-    expenseAmountInput.value = '';
-    expenseDescriptionInput.value = '';
+        expenseAmountInput.value = '';
+        expenseDescriptionInput.value = '';
+    } else {
+        document.querySelector(".error-message").innerHTML = `<div class="alert alert-danger" role="alert">Please enter both amount and desc</div>`
+    }
 
 }
 
