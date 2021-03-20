@@ -5,7 +5,7 @@ const expenseAmountInput = document.querySelector("#expense")
 const expenseDescriptionInput = document.querySelector("#expenseDesc");
 
 const totalExpenseOutput = document.querySelector(".totalExpense");
-totalExpenseOutput.innerHTML = totalExpense;
+totalExpenseOutput.textContent = `Total : ${totalExpense}`;
 
 const expenseTableOutput = document.querySelector(".expenseTable");
 
